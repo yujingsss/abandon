@@ -42,7 +42,7 @@ function getCursorElement(id) {
 // let b = Math.random()*255;
 socket.on('draw_cursor', function (data) {
     let el = getCursorElement(data.id);
-    el.style.background = `rgba(${data.color[0]},${data.color[1]},${data.color[2]},0.3)`;
+    el.style.background = `rgba(${data.color[0]},${data.color[1]},${data.color[2]},0.5)`;
     // console.log(el.offsetLeft);
     // offset = [
     //     el.offsetLeft - data.mousePos[0],
