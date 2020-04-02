@@ -11,9 +11,36 @@ server.listen(port, function () {
     console.log(`server listening on localhost:${port}`);
 });
 
+let generateMessage = (text) => {
+    return {
+        text
+    };
+};
+io.on("connection", function (client) {
+    console.log('connected');
+    client.on('createMessage', (msg, callback) => {
+        console.log('createMessage', msg);
+        // broadcast to everyone including sender
+        io.emit('newMessage', generateMessage(msg.text));
+        callback(`server send message: ${msg.text}`);
+    });
+    let r = Math.random()*255;
+    let g = Math.random()*255;
+    let b = Math.random()*255;
+    client.on('cursorPos', (data) => {
+        // console.log(data);
+        client.broadcast.emit('draw_cursor', {
+            mousePos: data.mousePos,
+            id: client.id,
+            color: [r, g, b]
+        });
+    });
+});
+
 app.use(express.static(__dirname + "/public"));
 //https://expressjs.com/en/starter/static-files.html
 app.get('/', function (req, res) {
-    console.log(`serving ${__dirname} /index.html`);
-    res.sendFile(__dirname + "/index.html");
+    // console.log(`serving ${__dirname} /navigation.html`);
+    res.sendFile(__dirname + "/navigation.html");
+    res.sendFile(__dirname + "/isolation.html");
 });
