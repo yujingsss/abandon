@@ -24,15 +24,13 @@ io.on("connection", function (client) {
         io.emit('newMessage', generateMessage(msg.text));
         callback(`server send message: ${msg.text}`);
     });
-    let r = Math.random()*255;
-    let g = Math.random()*255;
-    let b = Math.random()*255;
+
     client.on('cursorPos', (data) => {
         // console.log(data);
         client.broadcast.emit('draw_cursor', {
             mousePos: data.mousePos,
             id: client.id,
-            color: [r, g, b]
+            color: [data.color[0], data.color[1], data.colo2[2]]
         });
     });
 });

@@ -37,32 +37,14 @@ function getCursorElement(id) {
     return element;
 }
 
-// let r = Math.random()*255;
-// let g = Math.random()*255;
-// let b = Math.random()*255;
 socket.on('draw_cursor', function (data) {
     let el = getCursorElement(data.id);
     el.style.background = `rgba(${data.color[0]},${data.color[1]},${data.color[2]},0.5)`;
-    // console.log(el.offsetLeft);
-    // offset = [
-    //     el.offsetLeft - data.mousePos[0],
-    //     el.offsetTop - data.mousePos[1]
-    // ];
-    console.log(data.mousePos);
-    // console.log(`${data.mousePos[0] + offset[0]}`);
-
-    // el.style.top = `${data.mousePos[0] + offset[0]}px`;
-    // el.style.left = `${data.mousePos[1] + offset[1]}px`;
+    // console.log(data);
     let xpos = data.mousePos[0];
     let ypos = data.mousePos[1];
     el.style.left = `${xpos}px`;
     el.style.top = `${ypos}px`;
-
-    // console.log(data.offset, data.mousePos);
-    // let xPos = data.mousePos[0] + data.offset[0];
-    // let yPos = data.mousePos[1] + data.offset[1];
-    // anothercursor.style.position.left = `${xPos}px`;
-    // anothercursor.style.position.top = `${yPos}px`;
 });
 
 
@@ -73,7 +55,7 @@ div.style.left = "0px";
 div.style.top = "0px";
 div.style.width = "20px";
 div.style.height = "20px";
-div.style.background = "rgba(255,0,0,0.3)";
+div.style.background = `rgba(${r},${g},${b}, 0.3)`;
 div.style.borderRadius = "10px";
 document.body.appendChild(div);
 
@@ -82,6 +64,10 @@ wrapdraw.style.margin = '0';
 wrapdraw.style.height = '100%';
 wrapdraw.style.width = '100%';
 document.body.appendChild(wrapdraw);
+
+let r = Math.random()*255;
+let g = Math.random()*255;
+let b = Math.random()*255;
 
 wrapdraw.addEventListener('mousemove', function (event) {
     offset = [
@@ -101,7 +87,8 @@ document.addEventListener('mousemove', function (event) {
     div.style.top = (mousePosition.y + offset[1]) + 'px';
     // console.log(mousePosition);
     socket.emit('cursorPos', {
-        mousePos: [mousePosition.x, mousePosition.y]
+        mousePos: [mousePosition.x, mousePosition.y],
+        color: [r, g, b]
     });
     offset = [0,0];
 });
