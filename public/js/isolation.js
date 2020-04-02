@@ -48,6 +48,11 @@ socket.on('draw_cursor', function (data) {
 });
 
 
+
+let r = Math.random()*255;
+let g = Math.random()*255;
+let b = Math.random()*255;
+
 let div;
 div = document.createElement("div");
 div.style.position = "absolute";
@@ -64,10 +69,6 @@ wrapdraw.style.margin = '0';
 wrapdraw.style.height = '100%';
 wrapdraw.style.width = '100%';
 document.body.appendChild(wrapdraw);
-
-let r = Math.random()*255;
-let g = Math.random()*255;
-let b = Math.random()*255;
 
 wrapdraw.addEventListener('mousemove', function (event) {
     offset = [

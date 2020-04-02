@@ -30,7 +30,7 @@ io.on("connection", function (client) {
         client.broadcast.emit('draw_cursor', {
             mousePos: data.mousePos,
             id: client.id,
-            color: [data.color[0], data.color[1], data.colo2[2]]
+            color: data.color
         });
     });
 });
