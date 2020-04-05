@@ -53,10 +53,10 @@ function showsynon() {
 abandontext.addEventListener('mouseenter', (event) => {
     // console.log(event.target);
     document.getElementById('wrap').removeEventListener('mousemove', showsynon);
+    abandontext.style.cursor = 'none';
     newword = `${inputword}.`;
     // console.log(newword);
     abandontext.innerText = newword;
-    abandontext.style.cursor = 'none';
 });
 abandontext.addEventListener('mouseleave', (event) => {
     // console.log(event.target);

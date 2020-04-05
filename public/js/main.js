@@ -107,15 +107,15 @@ window.addEventListener('mousemove', (event) => {
     let posX = mouseX/w;
     // console.log(posX);
     if (posX >= 0 && posX < 0.3) {
-        document.getElementById('wrap').style.backgroundImage = "url('yumen3.jpg')";
-        document.getElementById('wrap').style.backgroundSize = "cover";
+        document.body.style.backgroundImage = "url('yumen3.jpg')";
+        document.body.style.backgroundSize = "cover";
     }    
     if (posX >= 0.3 && posX < 0.65) {
-        document.getElementById('wrap').style.backgroundImage = "url('yumen2.jpg')";
-        document.getElementById('wrap').style.backgroundSize = "cover";
+        document.body.style.backgroundImage = "url('yumen2.jpg')";
+        document.body.style.backgroundSize = "cover";
     } if (posX >= 0.65 && posX < 0.9) {
-        document.getElementById('wrap').style.backgroundImage = "url('yumen1.jpg')";
-        document.getElementById('wrap').style.backgroundSize = "cover";
+        document.body.style.backgroundImage = "url('yumen1.jpg')";
+        document.body.style.backgroundSize = "cover";
     }
 });
 

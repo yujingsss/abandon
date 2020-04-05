@@ -27,12 +27,12 @@ let mousePosition;
 function getCursorElement(id) {
     let elementId = 'cursor-' + id;
     let element = document.getElementById(elementId);
-    // if(element == null) {
-    element = document.createElement('div');
-    element.id = elementId;
-    element.className = 'cursor';
-    // Perhaps you want to attach these elements another parent than document
-    document.body.appendChild(element);
+    // if (element == null) {
+        element = document.createElement('div');
+        element.id = elementId;
+        element.className = 'cursor';
+        // Perhaps you want to attach these elements another parent than document
+        document.body.appendChild(element);
     // }
     return element;
 }
@@ -47,8 +47,6 @@ socket.on('draw_cursor', function (data) {
     el.style.top = `${ypos}px`;
 });
 
-
-
 let r = Math.random()*255;
 let g = Math.random()*255;
 let b = Math.random()*255;
@@ -58,19 +56,20 @@ div = document.createElement("div");
 div.style.position = "absolute";
 div.style.left = "0px";
 div.style.top = "0px";
-div.style.width = "20px";
-div.style.height = "20px";
+div.style.width = "40px";
+div.style.height = "40px";
 div.style.background = `rgba(${r},${g},${b}, 0.3)`;
-div.style.borderRadius = "10px";
+div.style.borderRadius = "20px";
+div.style.zIndex = "2";
+// isolationtext.appendChild(div);
 document.body.appendChild(div);
 
-let wrapdraw = document.getElementById('wrap');
-wrapdraw.style.margin = '0';
-wrapdraw.style.height = '100%';
-wrapdraw.style.width = '100%';
-document.body.appendChild(wrapdraw);
+wrap.style.margin = '0';
+wrap.style.height = '100%';
+wrap.style.width = '100%';
+wrap.style.zIndex = '2';
 
-wrapdraw.addEventListener('mousemove', function (event) {
+wrap.addEventListener('mousemove', function (event) {
     offset = [
         div.offsetLeft - event.clientX,
         div.offsetTop - event.clientY
@@ -79,7 +78,7 @@ wrapdraw.addEventListener('mousemove', function (event) {
 
 document.addEventListener('mousemove', function (event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     mousePosition = {
         x: event.clientX,
         y: event.clientY
