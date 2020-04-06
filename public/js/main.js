@@ -33,6 +33,24 @@ socket.on('newMessage', function (msg) {
         document.querySelector('#answers').appendChild(otherli);
     }
 });
+socket.on('newLink', function(data){
+    // console.log(data.name, data.url);
+    let linkdiv = document.createElement('div');
+    linkdiv.style.backgroundColor = `rgba(${data.color[0]},${data.color[1]},${data.color[2]}, 0.8)`;
+    linkdiv.style.width = '200px';
+    linkdiv.style.height = '18px';
+    linkdiv.style.margin = '5px';
+    linkdiv.style.color = 'white';
+    linkdiv.style.padding = '5px';
+    linkdiv.style.cursor = 'zoom-in';
+    linkdiv.style.textAlign = 'center';
+    linkdiv.innerText = `${data.name}`;
+    linkdiv.addEventListener('click', () => {
+        // location.href = `${data.url}`;
+        window.open(`${data.url}`, '_blank');
+    });
+    document.querySelector('#answers').appendChild(linkdiv);
+});
 
 document.querySelector('#abandonanswer').addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
@@ -43,6 +61,35 @@ document.querySelector('#abandonanswer').addEventListener('keyup', function (eve
             console.log(`${msg}`);
         });
         document.getElementsByName("abandonanswer")[0].value = '';
+    }
+});
+let r = Math.random()*255;
+let g = Math.random()*255;
+let b = Math.random()*255;
+
+document.querySelector('#userlink').addEventListener('keyup', function (event) {
+    let pagename = document.getElementsByName("pagename")[0].value;
+    let userlink = document.getElementsByName("userlink")[0].value;
+    if (event.keyCode === 13 && pagename != '' && userlink != '') {
+        // document.querySelector('#answers').innerText = '';
+        // console.log(`${pagename}`);
+        socket.emit('createLink', {
+            name: pagename,
+            url: userlink,
+            color: [r, g, b]
+        }, function (data) {
+            console.log(`${data}`);
+        });
+        document.getElementsByName("pagename")[0].value = '';
+        document.getElementsByName("userlink")[0].value = '';
+    } 
+    if (event.keyCode === 13 && pagename === '') { 
+        document.querySelector('#answers').innerText = "Please enter a name"; 
+        document.querySelector('#answers').style.color = "white"; 
+    }
+    if (event.keyCode === 13 && userlink === '') { 
+        document.querySelector('#answers').innerText = "Please enter a url"; 
+        document.querySelector('#answers').style.color = "white"; 
     }
 });
 

@@ -34,7 +34,7 @@ function movecollapse(event) {
     collapsediv = document.getElementById(`${collapsedivid}`);
     collapsediv.style.top = '0';
     collapsediv.style.animationName = 'collapsedrop';
-    collapsediv.style.animationDuration = '10s';
+    collapsediv.style.animationDuration = '20s';
     // collapsediv.style.animationIterationCount = '1';
     collapsediv.style.animationFillMode= 'forwards';
 }

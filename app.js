@@ -24,6 +24,16 @@ io.on("connection", function (client) {
         io.emit('newMessage', generateMessage(msg.text));
         callback(`server send message: ${msg.text}`);
     });
+    client.on('createLink', (data, callback) => {
+        console.log('createLink', data);
+        // broadcast to everyone including sender
+        io.emit('newLink', {
+            name: data.name,
+            url:data.url,
+            color: data.color
+        });
+        callback(`server send message: ${data.text}`);
+    });
 
     client.on('cursorPos', (data) => {
         // console.log(data);
