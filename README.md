@@ -8,9 +8,9 @@ https://still-shelf-49757.herokuapp.com/
 <img src="demo/speed.png">
 <img src="demo/timer.png">
 <img src="demo/isolation.png">
-<img src="demo/ancient.png">
+<img src="https://github.com/yujingsss/abandon/blob/master/public/demo/ancient.png">
 <img src="demo/collapsing.png">
 <img src="demo/quantity.png">
 <img src="https://raw.githubusercontent.com/yujingsss/abandon/master/public/demo/404-1.png">
-<img src="demo/404-2.png">
+<img src="https://raw.githubusercontent.com/yujingsss/abandon/master/public/demo/404-2.png">
 </div>
