@@ -2,9 +2,7 @@
 
 https://still-shelf-49757.herokuapp.com/
 
-![image](https://github.com/yujingsss/abandon/blob/master/public/demo/index.png {width=100px})
-
-<div style="width:200px; height:auto;">
+<div style="width:200; height:auto;">
 <img src="https://github.com/yujingsss/abandon/blob/master/public/demo/index.png">
 <img src="https://github.com/yujingsss/abandon/blob/master/public/demo/navigation.png">
 <img src="https://github.com/yujingsss/abandon/blob/master/public/demo/speed.png">
